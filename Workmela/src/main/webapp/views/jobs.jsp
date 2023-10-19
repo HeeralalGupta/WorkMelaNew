@@ -201,7 +201,7 @@
 	    </div>
 	 </div>
   <!-- Banner ends -->
- 
+
   <!-- jobs list -->
   <section class="light">
 	<div class="container py-4">

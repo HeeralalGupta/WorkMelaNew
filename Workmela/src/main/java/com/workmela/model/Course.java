@@ -1,20 +1,23 @@
 package com.workmela.model;
 
-import java.sql.Blob;
-import java.sql.Date;
-
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "courses")
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Course {
 		@Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private int courseId;
 		private String courseTitle;
 		private String courseDescription;
@@ -24,10 +27,20 @@ public class Course {
 		private String courseSyllabus;
 		private String courseCertification;
 		private String paymentInformation;
-		private Blob courseImage;
-		private Date postDate;
-		private Date postTime;
-		
+		private String notes;
+		@Lob
+		private byte[] content;
+		private String fileType;
+		private String fileName;
+		private String postDate;
+		private String postTime;
+	
+		public String getNotes() {
+			return notes;
+		}
+		public void setNotes(String notes) {
+			this.notes = notes;
+		}
 		public int getCourseId() {
 			return courseId;
 		}
@@ -82,26 +95,36 @@ public class Course {
 		public void setPaymentInformation(String paymentInformation) {
 			this.paymentInformation = paymentInformation;
 		}
-		public Blob getCourseImage() {
-			return courseImage;
+		public byte[] getContent() {
+			return content;
 		}
-		public void setCourseImage(Blob courseImage) {
-			this.courseImage = courseImage;
+		public void setContent(byte[] content) {
+			this.content = content;
 		}
-		public Date getPostDate() {
+		public String getFileType() {
+			return fileType;
+		}
+		public void setFileType(String fileType) {
+			this.fileType = fileType;
+		}
+		public String getFileName() {
+			return fileName;
+		}
+		public void setFileName(String fileName) {
+			this.fileName = fileName;
+		}
+		public String getPostDate() {
 			return postDate;
 		}
-		public void setPostDate(Date postDate) {
+		public void setPostDate(String postDate) {
 			this.postDate = postDate;
 		}
-		public Date getPostTime() {
+		public String getPostTime() {
 			return postTime;
 		}
-		public void setPostTime(Date postTime) {
+		public void setPostTime(String postTime) {
 			this.postTime = postTime;
 		}
-		
-		
 		
 		
 }

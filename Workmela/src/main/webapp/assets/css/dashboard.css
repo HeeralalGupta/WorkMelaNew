@@ -26,7 +26,9 @@ background-color: var(--background-color4);
 max-width: 100%;
 overflow-x: hidden;
 }
-
+h3{
+	text-decoration: none;
+}
 header {
 height: 70px;
 width: 100vw;
@@ -209,14 +211,13 @@ border-left: 5px solid #010058af;
 background-color: var(--Border-color);
 color: white;
 cursor: pointer;
+text-decoration: none;
 }
 .option1:hover {
 border-left: 5px solid #010058af;
 background-color: var(--Border-color);
 }
-.logout{
-	text-decoration: none;
-}
+
 .box {
 height: 130px;
 width: 260px;

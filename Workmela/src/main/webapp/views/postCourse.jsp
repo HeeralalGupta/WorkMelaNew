@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+<%@page import = "java.text.SimpleDateFormat" %>
+<%@page import = "java.util.Date" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,9 +17,11 @@
 		href="assets/css/dashboard.css">
 	<link rel="stylesheet"
 		href="assets/css/responsive-dashboard.css">
-		
+	<link href="assets/css/post.css" rel="stylesheet">
 	<!--Font Awsome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  
 <style>
 			
 ul{
@@ -81,6 +84,29 @@ ul li ul.dropdown li{
 	text-decoration: none;
 	color: black;
 }
+/* success message */
+.alert {
+  padding: 20px;
+  background-color: #d4edda;
+  color: #155724;
+  opacity: 1;
+  transition: opacity 0.6s;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: #155724;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
 </style>
 
 </head>
@@ -92,7 +118,7 @@ ul li ul.dropdown li{
 		
 			if(session.getAttribute("emailHT") == null){ %>
 			
-				response.sendRedirect("loginHireTalent");
+				response.sendRedirect("loginRecruiter");
 				<%	
 			}
 	%>
@@ -165,7 +191,7 @@ ul li ul.dropdown li{
 						<h3>Post Jobs</h3>
 					</div>
 					</a>
-					<a  class = "menu" href = "postInternship">
+					<a class = "menu" href = "postInternship">
 					<div class="nav-option option3">
 						<img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183320/5.png"
 							class="nav-img"
@@ -223,103 +249,103 @@ ul li ul.dropdown li{
 
 			<div class="box-container">
 			
-				<div class="box box1">
-					<div class="text">
-						<h2 class="topic-heading">60.5k</h2>
-						<h2 class="topic">All Jobs</h2>
-					</div>
-
-					<img src="assets/img/jobs.png"
-						alt="Views">
-				</div>
-
-				<div class="box box2">
-					<div class="text">
-						<h2 class="topic-heading">150</h2>
-						<h2 class="topic">All Internship</h2>
-					</div>
-
-					<img src="assets/img/internship.png"
-						alt="likes">
-				</div>
-
-				<div class="box box3">
-					<div class="text">
-						<h2 class="topic-heading">320</h2>
-						<h2 class="topic">All Course </h2>
-					</div>
-
-					<img src="assets/img/courses.png"
-						alt="comments">
-				</div>
-
-				<div class="box box4">
-					<div class="text">
-						<h2 class="topic-heading">70</h2>
-						<h2 class="topic">All Hired</h2>
-					</div>
-
-					<img src="assets/img/hired.png" alt="published">
-				</div>
 			</div>
-
-	
-
-			<div class="report-container">
-				<div class="report-header">
-					<h1 class="recent-Articles">Recent Articles</h1>
-					<button class="view">View All</button>
+		
+			<!-- Body start -->
+			
+						<%
+						if(session.getAttribute("courseSuccess") != null){
+							out.print("<div class='alert'><span class='closebtn'>&times;</span> <strong>Success!</strong> You have posted new course.</div>");
+						}
+						%>
+				
+			<!--Login form start-->
+				<div class="form_wrapper">
+				  <div class="form_container">
+				  
+				    <div class="title_container">
+				      <h2>Post Course</h2>
+				      <font color="red">${errorMessage}</font>
+				    </div>
+				    <div class="row clearfix">
+				      <div class="">
+				        <form action="postCourse" method="post" enctype="multipart/form-data">
+							<div class="row clearfix">
+					            <div class="col_half">
+					              <div class="input_field"> <span><i aria-hidden="true" class="fa fa-header"></i></span>
+					                <input type="text" name="courseTitle" placeholder="Course Title" required/>
+					              </div>
+					            </div>
+					            <div class="col_half">
+					              <div class="input_field"> <span><i aria-hidden="true" class="fa fa-clock-o"></i></span>
+					                <input type="text" name="courseDuration" placeholder="Course Duration" required />
+					              </div>
+					            </div>
+					            <div class="col_half">
+					              <div class="input_field"> <span><i aria-hidden="true" class="fa fa-book"></i></span>
+					                <input type="text" name="courseDescription" placeholder="Description" required />
+					              </div>
+					            </div>
+					            <div class="col_half">
+					              <div class="input_field"> <span><i aria-hidden="true" class="fa fa-map"></i></span>
+					                <input type="text" name="courseSyllabus" placeholder="Syllabus" required />
+					              </div>
+					            </div>
+				          </div>    
+							<div class="row clearfix">
+					            <div class="col_half">
+					              <div class="input_field"> <span><i aria-hidden="true" class="fa fa-money"></i></span>
+					                <input type="number" name="courseFees" placeholder="Coures Fees" required/>
+					              </div>
+					            </div>
+					            <div class="col_half">
+					              <div class="input_field"> <span><i aria-hidden="true" class="fa fa-list-alt"></i></span>
+					                <input type="text" name="courseCategory" placeholder="Course Category" required />
+					              </div>
+					            </div>
+					            <div class="col_half">
+					              <div class="input_field"> <span><i aria-hidden="true" class="fa fa-image"></i></span>
+					                <input type="file" name="file" placeholder="Upload Image" required/>
+					              </div>
+					            </div>
+					            <div class="col_half">
+					              <div class="input_field"> <span><i aria-hidden="true" class="fa fa-calculator"></i></span>
+					                <input type="text" name="paymentInformation" placeholder="Payment Information" required />
+					              </div>
+					            </div>
+				          </div>    
+							<div class="row clearfix">
+					            <div class="col_half">
+					              <div class="input_field"> <span><i aria-hidden="true" class="fa fa-home"></i></span>
+					                <input type="text" name="courseCertification" placeholder="Certification" required/>
+					              </div>
+					            </div>
+					            <div class="col_half">
+					              <div class="input_field"> <span><i aria-hidden="true" class="fa fa-cogs"></i></span>
+					                <input type="text" name="notes" placeholder="Notes" required />
+					              </div>
+					            </div>
+					            <div class="col_half">
+					              <div class="input_field"> <span><i aria-hidden="true" class="fa fa-calendar"></i></span>
+					                <input type="date" name="postDate" placeholder="Select Date" required />
+					              </div>
+					            </div>
+					            <div class="col_half">
+					              <div class="input_field"> <span><i aria-hidden="true" class="fa fa-clock-o"></i></span>
+					                <input type="time" name="postTime" placeholder="Select Time" required />
+					              </div>
+					            </div>
+				          </div>    
+				          <input class="button mx-auto" type="submit" value="Post" />
+				        </form>
+				        
+				      </div>
+				    </div>
+				  </div>
 				</div>
-
-				<div class="report-body">
-					<div class="report-topic-heading">
-						<h3 class="t-op">Article</h3>
-						<h3 class="t-op">Views</h3>
-						<h3 class="t-op">Comments</h3>
-						<h3 class="t-op">Status</h3>
-					</div>
-
-					<div class="items">
-						<div class="item1">
-							<h3 class="t-op-nextlvl">Article 73</h3>
-							<h3 class="t-op-nextlvl">2.9k</h3>
-							<h3 class="t-op-nextlvl">210</h3>
-							<h3 class="t-op-nextlvl label-tag">Published</h3>
-						</div>
-
-						<div class="item1">
-							<h3 class="t-op-nextlvl">Article 72</h3>
-							<h3 class="t-op-nextlvl">1.5k</h3>
-							<h3 class="t-op-nextlvl">360</h3>
-							<h3 class="t-op-nextlvl label-tag">Published</h3>
-						</div>
-
-						<div class="item1">
-							<h3 class="t-op-nextlvl">Article 71</h3>
-							<h3 class="t-op-nextlvl">1.1k</h3>
-							<h3 class="t-op-nextlvl">150</h3>
-							<h3 class="t-op-nextlvl label-tag">Published</h3>
-						</div>
-
-						<div class="item1">
-							<h3 class="t-op-nextlvl">Article 70</h3>
-							<h3 class="t-op-nextlvl">1.2k</h3>
-							<h3 class="t-op-nextlvl">420</h3>
-							<h3 class="t-op-nextlvl label-tag">Published</h3>
-						</div>
-
-						<div class="item1">
-							<h3 class="t-op-nextlvl">Article 69</h3>
-							<h3 class="t-op-nextlvl">2.6k</h3>
-							<h3 class="t-op-nextlvl">190</h3>
-							<h3 class="t-op-nextlvl label-tag">Published</h3>
-						</div>
-
-						
-
-					</div>
-				</div>
-			</div>
+				
+			  <!--Login form ends--> 
+			
 		</div>
 	</div>
 	
@@ -331,5 +357,18 @@ ul li ul.dropdown li{
 		nav.classList.toggle("navclose");
 	})
 	</script>
+	<!-- //close success box -->
+	<script>
+		var close = document.getElementsByClassName("closebtn");
+		var i;
+		
+		for (i = 0; i < close.length; i++) {
+		  close[i].onclick = function(){
+		    var div = this.parentElement;
+		    div.style.opacity = "0";
+		    setTimeout(function(){ div.style.display = "none"; }, 600);
+		  }
+		}
+</script>
 </body>
 </html>

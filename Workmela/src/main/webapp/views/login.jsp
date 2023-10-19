@@ -165,9 +165,6 @@
 	</div>
 	<!--Login form start-->
 	<div class="form_wrapper">
-	
-		
-	
 	  <div class="form_container">
 	  
 	    <div class="title_container">

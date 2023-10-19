@@ -53,16 +53,26 @@ public class HomeController {
 	public String course() {
 		return "course";
 	}
-	@RequestMapping("/courseRegister")
-	public String courseRegister() {
-		return "courseRegister";
+	
+	@RequestMapping("/postInternship")
+	public String postInternship() {
+		return "postInternship";
 	}
-	@RequestMapping("/registerInternship")
-	public String internRegister() {
-		return "registerInternship";
+	@RequestMapping("/postJob")
+	public String postJob() {
+		return "postJob";
 	}
-	@RequestMapping("/applyJobs")
-	public String applyJobs() {
-		return "applyJobs";
+	@RequestMapping("/postCourse")
+	public String postCourse() {
+		return "postCourse";
 	}
+	@RequestMapping("/recruiterHelp")
+	public String recruiterHelp() {
+		return "recruiterHelp";
+	}
+	@RequestMapping("/recruiterProfile")
+	public String recruiterProfile() {
+		return "recruiterProfile";
+	}
+
 }

@@ -139,11 +139,10 @@
 </head>
 
 <body>
-		
-	
+
 	<!--<script>alert("You have registered successfully")</script>-->
   <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top">
+  <header id="header " class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <a href="index" class="logo d-flex align-items-center">
@@ -184,16 +183,19 @@
 	 		</div>
 	 	</div>
 	 	<div class="row search">
+	 	<form action = "search" method = "GET">
 	        <div class="col-md-5 mx-auto">
 	            <div class="input-group backgroundSearch mx-auto">
-	                <input class="form-control border-end-0 border rounded-pill pl-2" type="search" placeholder = "Type to search..." id="search-input">
+	            
+	                <input class="form-control border-end-0 border rounded-pill pl-2" type="search" placeholder = "Type to search..." id="title" name = "title">
 	                <span class="input-group-append">
 	                    <button class="btn btn-outline-secondary bg-gray border-bottom-0 border rounded-pill ms-n5" type="button">
 	                        <i class="fa fa-search"></i>
 	                    </button>
-	                </span>
+	                </span> 
 	            </div>
 	        </div>
+	     </form>
 	    </div>
 	 </div>
   <!-- Banner ends -->
@@ -415,7 +417,7 @@
 			}
 		})
 </script>
-	
+
 </body>
 
 </html>

@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.workmela.model.User;
 import com.workmela.service.UserService;
+import com.workmelahelper.CookiesHelper;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -41,13 +43,14 @@ public class UserController {
 	private UserService loginService;
 		
 		@PostMapping("/login")
-		public String getUser(@ModelAttribute User user, Model model, HttpServletRequest request) {
+		public String getUser(@ModelAttribute User user, Model model, HttpServletRequest request, HttpServletResponse response) {
 			User login = loginService.getUser(user.getUserEmail(), user.getPassword());
 			
 			if(Objects.nonNull(login)) {
 				model.addAttribute("uName", user.getFirstName());
 				request.getSession().setAttribute("firstName", login.getFirstName());
 				request.getSession().setAttribute("email", login.getFirstName());
+				CookiesHelper.setUserCookies("wm_user_session", login, 60 * 60 * 24, response);
 				return "redirect:/dashboard";
 				
 			}else {

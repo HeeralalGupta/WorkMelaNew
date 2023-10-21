@@ -78,6 +78,11 @@ ul li ul.dropdown li{
 	font-family: "Poppins", sans-serif;
 	
 }
+.nav-option h3 a{
+  color : black;
+  text-decoration:  none;
+  
+}
 </style>
 
 </head>
@@ -163,11 +168,11 @@ ul li ul.dropdown li{
 					</div>
 
 					<div class="nav-option option4">
-						<img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183321/6.png"
-							class="nav-img"
-							alt="institution">
-						<h3>Courses</h3>
-					</div>
+		            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183321/6.png"
+		              class="nav-img"
+		              alt="institution">
+		            <h3><a href="user-courses">Courses</a></h3>
+          			</div>
 
 					<div class="nav-option option5">
 						<img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183323/10.png"

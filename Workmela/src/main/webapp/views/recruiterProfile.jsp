@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +16,7 @@
 		href="assets/css/dashboard.css">
 	<link rel="stylesheet"
 		href="assets/css/responsive-dashboard.css">
+		<link href="assets/css/recruiterProfile.css" rel="stylesheet">
 		
 	<!--Font Awsome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -108,21 +109,10 @@ ul li ul.dropdown li{
 				alt="menu-icon">
 		</div>
 
-		<div class="searchbar">
-			<input type="text"
-				placeholder="Search">
-			<div class="searchbtn">
-			<img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180758/Untitled-design-(28).png"
-					class="icn srchicn"
-					alt="search-icon">
-			</div>
-		</div>
+		
 
 		<div class="message">
-			<div class="circle"></div>
-			<img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183322/8.png"
-				class="icn"
-				alt="">
+			
 			<ul>
 				<li>
 					<div class="dp">
@@ -228,6 +218,46 @@ ul li ul.dropdown li{
 
 			<!-- Body start -->
 			
+				<div class="hero-unit-title">
+				  <p>Profile</p>
+				</div>
+				<div class="profile-background">
+				  <div class="profile-container">
+				    <div class="profile-wrapper"><img class="profile-circle" src="assets/img/profile.jpg"/>
+				      <div class="profile-divider"></div>
+				      <div class="profile-info">
+				        <h3><% out.print(name);%></h3><small>(Recruiter)</small>
+				      </div>
+				      <div class="profile-extras">
+				        <div class="stars"> <span> <i class="material-icons"> <c:forEach var = "recruiter" items = "${recruiterList}">${recruiter.companyEmail}</c:forEach> </i></span></div>
+				        <div class="description">
+				          <p>"A modern recruiter is one who is targeted, builds relationships and knows how to not only find candidates but also get them to respond!"</p>
+				         </div>
+				      </div>
+				    <!-- </div><a class="add-photo-cc" href="#"><i class="material-icons">add_a_photo</i>
+				      <div class="add-photo-tooltip">Cambiar foto de portada</div></a> -->
+				  </div>
+				</div>
+				<div class="separator-content">
+				  <div class="row">
+				    <div class="min"></div>
+				    <div class="col s4"><span class="chico">230</span>
+				      <p>Total Intarnship Post</p>
+				    </div>
+				    <div class="col s4"><span class="chico">150</span>
+				      <p>Total Jobs Post</p>
+				    </div>
+				    <div class="col s4"><span class="chico">89</span>
+				      <p>Total Course Post</p>
+				    </div>
+				  </div>
+				</div>
+				<div class="center"><a href="#"><i class="icon-facebook mediano"></i></a><a href="#"><i class="icon-twitter mediano"></i></a><a href="#"><i class="icon-google mediano"></i></a></div>
+				<hr class="divider"/>	
+			</div>
+			
+			
+			<!-- body end -->
 			
 		</div>
 	</div>

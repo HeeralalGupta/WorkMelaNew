@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +17,7 @@
 	<link rel="stylesheet"
 		href="assets/css/responsive-dashboard.css">
 	<link href="assets/css/post.css" rel="stylesheet">
+	<link href="assets/css/recruiterTable.css" rel="stylesheet">
 	<!--Font Awsome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -131,21 +132,8 @@ ul li ul.dropdown li{
 				alt="menu-icon">
 		</div>
 
-		<div class="searchbar">
-			<input type="text"
-				placeholder="Search">
-			<div class="searchbtn">
-			<img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180758/Untitled-design-(28).png"
-					class="icn srchicn"
-					alt="search-icon">
-			</div>
-		</div>
-
 		<div class="message">
-			<div class="circle"></div>
-			<img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183322/8.png"
-				class="icn"
-				alt="">
+
 			<ul>
 				<li>
 					<div class="dp">
@@ -352,7 +340,58 @@ ul li ul.dropdown li{
 				  </div>
 				</div>
 			  <!--Login form ends-->
-			
+			<!-- Table data start -->				  
+			<div class="card">
+			  <div class="table-title">
+			    <h2>ALL POSTED JOB</h2>
+			  </div>
+			 </div>
+			  <div class="table-concept">
+			    <input class="table-radio" type="radio" name="table_radio" id="table_radio_0" checked="checked"/>
+			    <div class="table-display">Showing 1 to 20
+			      of 95 items
+			    </div>
+			    <table>
+			      <thead>
+			        <tr>
+			          <th></th>
+			          <th>No</th>
+			          <th>JOB TITILE</th>
+			          <th>JOB ROLE</th>
+			          <th>JOB LOCATION</th>
+			          <th>JOB SALARY</th>
+			          <th>JOB EXPERIENCE</th>
+			          <th>POST DATE</th>
+			          <th>ACTION</th>
+			        </tr>
+			      </thead>
+			      <tbody>
+			      <c:forEach items="${allJobs}" var="job" varStatus = "counter">
+				        <tr>
+				          <td> <input type="checkbox"/></td>
+				          <td>${counter.count}</td>
+				          <td>${job.jobTitle}</td>
+				          <td>${job.jobRole}</td>
+				          <td>${job.jobLocation}</td>
+				          <td>${job.jobSalary}</td>
+				          <td>${job.experience}</td>
+				          <td>${job.postDate}</td>
+				          <td><input type ="submit" value = "Update"><input type = "submit" value = "Delete"></td>
+				        </tr>
+			        </c:forEach>
+			      </tbody>
+			    </table>
+			    <div class="pagination">
+			      <label class="disabled" for="table_radio_-1">&laquo; Previous</label>
+			      <label class="active" for="table_radio_0" id="table_pager_0">1</label>
+			      <label for="table_radio_1" id="table_pager_1">2</label>
+			      <label for="table_radio_2" id="table_pager_2">3</label>
+			      <label for="table_radio_3" id="table_pager_3">4</label>
+			      <label for="table_radio_4" id="table_pager_4">5</label>
+			      <label for="table_radio_1">Next &raquo;</label>
+			    </div>			   			   
+			  </div>
+			  <!-- Table data end -->
 		</div>
 	</div>
 	

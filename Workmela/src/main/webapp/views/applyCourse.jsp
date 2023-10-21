@@ -7,7 +7,7 @@
       <meta charset="utf-8">
       <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-      <title>Course</title>
+      <title>Apply Course</title>
       <meta content="" name="description">
       <meta content="" name="keywords">
 
@@ -34,8 +34,8 @@
 
       <!-- Template Main CSS File -->
       <link href="assets/css/style.css" rel="stylesheet">
-      <link href="assets/css/register.css" rel="stylesheet">
-
+      <link href="assets/css/apply.css" rel="stylesheet">
+	<link href="assets/css/register.css" rel="stylesheet">
       <!-- =======================================================
   * Template Name: Heera
   * Updated: Sep 18 2023 with Bootstrap v5.3.2
@@ -213,48 +213,58 @@ Java can help reduce costs, drive innovation, & improve application services; th
         </div>
       </div>
       <!-- Banner ends -->
-
-      <!--Course Card Insert form-->
-<section id="hero" class="hero d-flex align-items-center">
-        <div class="container ">
-          <div class="row">
-            <div class="col-sm-8 text-center mb-2 mx-auto">
-              <% if(session.getAttribute("courserRegDone") !=null){ %>
-                <div class='alert alert-success alert-dismissible fade show' role='alert'>
-                  <strong>Thanks!</strong> Your registration has done. We will get back soon.<button
-                    type='button' class='btn-close' data-bs-dismiss='alert'
-                    aria-label='Close'></button>
-                </div>
-                <% } %>
-            </div>
-          </div>
-          <div class="row">
-            <c:forEach items="${allCourse}" var="course">
-              <div class="col-sm-3">
-                <div class="card custom-card-container" style="width: 18rem;">
-                  <img src="data:${course.fileType};base64,${course.fileName}" width="70px" height="160px"
-                    class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <p class="card-text">
-                    <h2>${course.courseTitle}</h2>
-                    <p>${course.courseDescription}</p>
-                    <br>
-                    <br>
-                    <p style="font-size: 20px;" class="d-flex">
-                      <b>&#8377; ${course.courseFees}</b>&nbsp; <label
-                        style="text-decoration: line-through; font-size: 15px;">
-                        <b>1000</b>
-                      </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="applyCourse?course-id=${course.courseId}&course-title=${course.courseTitle}"><button
-                          type="button" class="btn btn-primary">Enroll</button></a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </c:forEach>
-          </div>
-        </div>
-      </section>
-
+		<!--Registration form-->
+	<div class="form_wrapper">
+		<div class="form_container">
+			<div class="title_container">
+				<h2>Apply for Job</h2>
+				<font color="red">${validateEmail}</font>
+			</div>
+			<div class="row clearfix">
+				<div class="">
+					<form action="applyjob" method="post">
+						<div class="input_field">
+							<span><i aria-hidden="true" class="fa fa-upload"></i></span> <input
+								type="file" name="file" placeholder="Upload Government Id" required />
+						</div>
+						<div class="input_field">
+							<span><i aria-hidden="true" class="fa fa-user-circle"></i></span> <input
+								type="text" name="name" placeholder="Name" maxlength = "10" required />
+						</div>
+						<div class="input_field">
+							<span><i aria-hidden="true" class="fa fa-envelope"></i></span> <input
+								type="email" name="Email" placeholder="Email" required />
+						</div>
+						<div class="input_field">
+							<span><i aria-hidden="true" class="fa fa-phone"></i></span> <input
+								type="number" name="mobile" placeholder="Mobile Number" required />
+						</div>
+						<div class="input_field">
+							<span><i aria-hidden="true" class="fa fa-calendar"></i></span> <input
+								type="date" name="dob" placeholder="Date of Birth" required />
+						</div>
+						<div class="input_field">
+							<span><i aria-hidden="true" class="fa fa-book"></i></span> <input
+								type="text" name="higestQualifiction" placeholder="Higest Qualifiction" required />
+						</div>
+						<div class="input_field">
+							<span><i aria-hidden="true" class="fa fa-map"></i></span> <input
+								type="text" name="location" placeholder="Location" required />
+						</div>
+						
+						<div class="input_field checkbox_option">
+							<input type="checkbox" id="cb1"> <label for="cb1">I
+								agree with terms and conditions</label>
+						</div>
+						<input class="button" type="submit" value="Apply" />
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--Registration fom end-->
+    
 	
 
       <!-- ======= Footer ======= -->

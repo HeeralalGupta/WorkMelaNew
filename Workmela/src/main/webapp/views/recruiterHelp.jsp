@@ -19,6 +19,7 @@
 		
 	<!--Font Awsome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="assets/css/register.css" rel="stylesheet">
 <style>
 			
 ul{
@@ -81,6 +82,29 @@ ul li ul.dropdown li{
 	text-decoration: none;
 	color: black;
 }
+/* success message */
+.alert {
+  padding: 20px;
+  background-color: #d4edda;
+  color: #155724;
+  opacity: 1;
+  transition: opacity 0.6s;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: #155724;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
 </style>
 
 </head>
@@ -108,21 +132,8 @@ ul li ul.dropdown li{
 				alt="menu-icon">
 		</div>
 
-		<div class="searchbar">
-			<input type="text"
-				placeholder="Search">
-			<div class="searchbtn">
-			<img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180758/Untitled-design-(28).png"
-					class="icn srchicn"
-					alt="search-icon">
-			</div>
-		</div>
-
 		<div class="message">
-			<div class="circle"></div>
-			<img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183322/8.png"
-				class="icn"
-				alt="">
+	
 			<ul>
 				<li>
 					<div class="dp">
@@ -227,8 +238,44 @@ ul li ul.dropdown li{
 			</div>
 
 			<!-- Body start -->
-			
-			
+			<%
+						if(session.getAttribute("helpSuccess") != null){
+							out.print("<div class='alert'><span class='closebtn'>&times;</span> <strong>Thanks!</strong> We will back to you soon.</div>");
+						}
+						%>
+				
+			<!--Login form start-->
+			<div class="form_wrapper">
+			  <div class="form_container">
+			  
+			    <div class="title_container">
+			      <h2>Get in Touch</h2>
+			      <font color="red">${errorMessage}</font>
+			    </div>
+			    <div class="row clearfix">
+			      <div class="">
+			        <form action="help" method="post">
+			          <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user-circle"></i></span>
+			            <input type="text" name="name" placeholder="Name" required />
+			          </div>
+			          <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+			            <input type="email" name="email" placeholder="Email" required />
+			          </div>
+			          <div class="input_field"> <span><i aria-hidden="true" class="fa fa-phone"></i></span>
+			            <input type="text" name="mobile" placeholder="Moblile Number" required />
+			          </div>
+			          <div class="input_field"> <span><i aria-hidden="true" class="fa fa-comment"></i></span>
+			            <input type = "text" name="comments" placeholder="Comments" width = "100px" required />
+			          </div>
+		               
+			          <input class="button" type="submit" value="Submit" />
+			        </form>
+			        
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		  <!--Login form ends-->			
 		</div>
 	</div>
 	
@@ -240,5 +287,18 @@ ul li ul.dropdown li{
 		nav.classList.toggle("navclose");
 	})
 	</script>
+	<!-- //close success box -->
+	<script>
+		var close = document.getElementsByClassName("closebtn");
+		var i;
+		
+		for (i = 0; i < close.length; i++) {
+		  close[i].onclick = function(){
+		    var div = this.parentElement;
+		    div.style.opacity = "0";
+		    setTimeout(function(){ div.style.display = "none"; }, 600);
+		  }
+		}
+</script>
 </body>
 </html>

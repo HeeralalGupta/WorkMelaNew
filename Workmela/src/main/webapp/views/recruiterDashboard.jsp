@@ -108,21 +108,8 @@ ul li ul.dropdown li{
 				alt="menu-icon">
 		</div>
 
-		<div class="searchbar">
-			<input type="text"
-				placeholder="Search">
-			<div class="searchbtn">
-			<img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180758/Untitled-design-(28).png"
-					class="icn srchicn"
-					alt="search-icon">
-			</div>
-		</div>
-
 		<div class="message">
-			<div class="circle"></div>
-			<img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183322/8.png"
-				class="icn"
-				alt="">
+	
 			<ul>
 				<li>
 					<div class="dp">

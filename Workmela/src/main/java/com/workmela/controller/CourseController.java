@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,8 +22,9 @@ public class CourseController {
 	private CourseService courseService;
 	
 	@PostMapping("/postCourse")
-	public String saveCourse(@ModelAttribute Course course, @RequestParam("file") MultipartFile file, HttpServletRequest request) throws IOException {
+	public String saveCourse(@ModelAttribute Course course, @RequestParam("file") MultipartFile file, HttpServletRequest request, Model model) throws IOException {
 		
+		//Inserting course data into database
 		byte[] content = file.getBytes();
 		String fileName = file.getOriginalFilename();
 		String fileType = file.getContentType();
@@ -33,6 +35,8 @@ public class CourseController {
 		if(uploadCourse != null) {
 			request.getSession().setAttribute("courseSuccess", uploadCourse);
 		}
+
+		
 		return "redirect:/postCourse";
 	}
 }

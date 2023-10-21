@@ -1,5 +1,7 @@
 package com.workmela.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,9 @@ public class InternshipService {
 	
 	public Internship postInternship(Internship internship) {
 		return internshipRepository.save(internship);
+	}
+	
+	public List<Internship> getAllInternship() {
+		return internshipRepository.findAll();
 	}
 }

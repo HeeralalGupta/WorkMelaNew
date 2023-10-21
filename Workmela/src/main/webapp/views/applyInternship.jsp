@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Internship</title>
+  <title>Apply Internship</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -17,7 +17,7 @@
   <link href="assets/img/xyz.jfif" rel="icon">
   <link href="assets/img/xyz.jfif" rel="apple-touch-icon">
   
-  <link href="assets/css/internship.css" rel="stylesheet">
+  <link href="assets/css/apply.css" rel="stylesheet">
   <!--Font Awsome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500&amp;subset=latin-ext" rel="stylesheet">
@@ -182,7 +182,7 @@
 	 <div class= "container-fluid back">
 	 	<div class = "row mx-auto head">
 	 		<div class = "col-sm-12 mx-auto">
-	 			<h1>Internship</h1>
+	 			<h1>Apply Internship</h1>
 	 			<p style = "font-style:italic;">"If opportunity doesn't knock, build a door."</p>
 	 		</div>
 	 	</div>
@@ -214,35 +214,66 @@
 		</div>
   </div>
   
-   <div class="container">
-    <div class="row pt-5 m-auto">
-    
-      <!-- Dynamic cards will come here -->
-      <c:forEach items="${allInternship }" var="internship">
-      <!-- card start -->
-      <div class="col-md-6 col-lg-4 pb-3">
-
-        <!-- Add a style="height: XYZpx" to div.card to limit the card height and display scrollbar instead -->
-        <div class="card card-custom bg-white border-white border-0" style="height: 450px">
-          <div class="card-custom-img" style="data:${internship.fileType};base64,${internship.fileName}"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="assets/img/in.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">${internship.internTitle}</h4>
-       
-            <p class="card-text">${internship.interDescription}</p>
-          </div>
-          <div class="card-footer" style="background: inherit; border-color: inherit;">
-            <a href="applyInternship" class="btn btn-primary mt-2 mb-2">Apply Now</a>
-          </div>
-        </div>
-      </div>
-     <!-- card end -->
-     </c:forEach>
-    </div>
-  </div>
-  
+ 	<!-- body start -->
+  	<!--Registration form-->
+	<div class="form_wrapper">
+		<div class="form_container">
+			<div class="title_container">
+				<h2>Apply for Internship</h2>
+				<font color="red">${validateEmail}</font>
+			</div>
+			<div class="row clearfix">
+				<div class="">
+					<form action="applyinternship" method="post">
+						<div class="input_field">
+							<span><i aria-hidden="true" class="fa fa-upload"></i></span> <input
+								type="file" name="file" placeholder="Upload Resume" required />
+						</div>
+						<div class="input_field">
+							<span><i aria-hidden="true" class="fa fa-user-circle"></i></span> <input
+								type="text" name="name" placeholder="Name" maxlength = "10" required />
+						</div>
+						<div class="input_field">
+							<span><i aria-hidden="true" class="fa fa-envelope"></i></span> <input
+								type="email" name="email" placeholder="Email" required />
+						</div>
+						<div class="input_field">
+							<span><i aria-hidden="true" class="fa fa-phone"></i></span> <input
+								type="number" name="mobile" placeholder="Mobile Number" required />
+						</div>
+						<div class="input_field">
+							<span><i aria-hidden="true" class="fa fa-calendar"></i></span> <input
+								type="date" name="date" placeholder="Date of Birth" required />
+						</div>
+						<div class="input_field">
+							<span><i aria-hidden="true" class="fa fa-book"></i></span> <input
+								type="text" name="highestQualification" placeholder="Highest Qualification" required />
+						</div>
+						<div class="input_field">
+							<span><i aria-hidden="true" class="fa fa-history"></i></span> <input
+								type="text" name="workExperience" placeholder="Work Experience" required />
+						</div>
+						<div class="input_field">
+							<span><i aria-hidden="true" class="fa fa-book"></i></span> <input
+								type="text" name="skills" placeholder="Skills" required />
+						</div>
+						<div class="input_field">
+							<span><i aria-hidden="true" class="fa fa-money"></i></span> <input
+								type="number" name="expectedSalary" placeholder="Expected Salary" required />
+						</div>		
+						
+						<div class="input_field checkbox_option">
+							<input type="checkbox" id="cb1"> <label for="cb1">I
+								agree with terms and conditions</label>
+						</div>
+						<input class="button" type="submit" value="Apply" />
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--Registration fom end-->
   
   
 	 <!-- ======= Footer ======= -->

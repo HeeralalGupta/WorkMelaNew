@@ -1,5 +1,7 @@
 package com.workmela.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,7 @@ public class RecruiterService {
 	
 	
 	// Recruiter Registration service
-	public Recruiter getRecruiterEmail(String email) {
+	public List<Recruiter> getRecruiterEmail(String email) {
 		return recruiterRepo.findByCompanyEmail(email);
 	}
 	

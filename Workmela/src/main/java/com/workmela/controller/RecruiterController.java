@@ -1,5 +1,6 @@
 package com.workmela.controller;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +25,12 @@ public class RecruiterController {
 	
 	/* Recruiter Registration */
 	@PostMapping("/registerRecruiter")
-	public String registerHireTalent(@ModelAttribute Recruiter recruiter, HttpServletRequest request) {
+	public String registerHireTalent(@ModelAttribute Recruiter recruiter, HttpServletRequest request, Model model) {
 		
-		Recruiter email = recruiterService.getRecruiterEmail(recruiter.getCompanyEmail());	
+		List<Recruiter> recruiterList = recruiterService.getRecruiterEmail(recruiter.getCompanyEmail());
 
-		if(email == null){
+		if(recruiterList != null){
+			model.addAttribute("recruiterList", recruiterList);
 			recruiterService.saveRecruiter(recruiter);
 			request.getSession().setAttribute("registerHTSuccess", "You have registered successfully");
 			return "redirect:/loginRecruiter";
